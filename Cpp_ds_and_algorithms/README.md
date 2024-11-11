@@ -89,7 +89,7 @@ Przykład implementacji dla C++: `inser_sort.cpp`
 
 ---
 
-## 5. Selection Sort (Sortowanie przez Wybieranie)
+## 6. Selection Sort (Sortowanie przez Wybieranie)
 Counting Sort to algorytm sortowania o złożoności liniowej, który działa poprzez zliczanie wystąpień każdego elementu. Jest szczególnie efektywny przy sortowaniu liczb całkowitych z ograniczonym zakresem wartości.
 
 ### Kroki działania:
