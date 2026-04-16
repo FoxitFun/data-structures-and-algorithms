@@ -59,6 +59,55 @@ void merge(int tab[], int left, int mid, int right)
 }
 
 /**
+ * Funkcja scalająca dwie posortowane podtablice.
+ * Krótsza implementacja poprzez zastosowanie petli while.
+ * Funkcja ta jest wywoływana przez funkcję sortByMerge()
+ * @param tab tablica do posrtowania.
+ * @param left idx pierwszego elementu tablicy/sub-tablicy.
+ * @param mid idx środkowego elementu tablicy/sub-tablicy.
+ * @param right idx ostatniego elementu tablicy/sub-tablicy.
+ */
+void merge_with_while(int tab[], int left, int mid, int right)
+{
+    int i = left;
+    int j = mid + 1;
+
+    // Skopiuj zawartość tablicy tab[] do tablicy pom[]
+    // Operując na pom[index], zamiast tab[index] unikamy utraty danych przy podmianie
+    for (int k = left; k <= right; k++)
+    {
+        pom[k] = tab[k];
+    }
+
+    int k = left;
+
+    // 1. Scalanie dopóki obie tablice mają elementy:
+    while (i <= mid && j <= right)
+    {
+        if (pom[i] <= pom[j])
+        {
+            tab[k++] = pom[i++];
+        }
+        else
+        {
+            tab[k++] = pom[j++];
+        }
+    }
+
+    // 2. Przenieś pozostałe elementy tablicy po lewej:
+    while (i <= mid)
+    {
+        tab[k++] = pom[i++];
+    }
+
+    // 3. Przenieś pozostałe elementy tablicy po prawej:
+    while (j <= right)
+    {
+        tab[k++] = pom[j++];
+    }
+}
+
+/**
  * Funkcja rekuręcyjna, która sortuje tablicę algorytmem sortowania przez scalanie.
  * Funkcja ta rozbija tablice na sub tablice, po czym wywołuje funkcję merge()
  * do po scalenia elementów w posortowanej kolejnosci.
